@@ -11,7 +11,7 @@ router = APIRouter()
 
 @router.get("/analyze/{sector}")
 @limiter.limit("5/minute")
-def analyze_sector(request: Request, sector: str, user=Depends(verify_user)):
+def analyze_sector(request: Request, sector: str, api_key: str= Query(None), user=Depends(verify_user)):
 
     validate_sector(sector)
 
