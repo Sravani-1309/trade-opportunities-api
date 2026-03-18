@@ -1,5 +1,8 @@
 from google import genai
-api_key="AIzaSyCuBsAd3hysDpR3P3FJEcckKCYENCERMVw"
+import os
+
+# create client using environment variable
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def analyze_data(data: str, sector: str):
     try:
