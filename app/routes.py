@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Request, HTTPException
+from fastapi import APIRouter, Depends, Request, HTTPException, Query
 from app.services.data_service import get_market_data
 from app.services.ai_service import analyze_data
 from app.services.report_service import generate_report
