@@ -1,11 +1,12 @@
+from dotenv import load_dotenv
+load_dotenv()
 from fastapi import FastAPI
 from app.routes import router
 from app.utils.rate_limiter import limiter
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi.errors import RateLimitExceeded
 from fastapi.responses import JSONResponse
-from dotenv import load_dotenv
-load_dotenv()
+
 
 app = FastAPI()
 

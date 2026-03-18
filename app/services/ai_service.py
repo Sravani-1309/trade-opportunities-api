@@ -1,9 +1,8 @@
 from google import genai
 import os
-
+print("API KEY:", os.getenv("GEMINI_API_KEY"))
 # create client using environment variable
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-
 def analyze_data(data: str, sector: str):
     try:
         prompt = f"""
