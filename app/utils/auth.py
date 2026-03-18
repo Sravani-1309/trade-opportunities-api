@@ -1,7 +1,9 @@
 from fastapi import Header, HTTPException
 
-def verify_user(api_key: str = Header(None, alias="x-api-key")):
+def verify_user(x_api_key: str = Header(None, alias="x-api-key"),
+               api_key: str=None):
     print("Received API KEY:", api_key)
-    if api_key != "mysecretkey":
+    key = x_api_key or api_key               
+    if key != "mysecretkey":
         raise HTTPException(status_code=401, detail="Unauthorized")
-    return api_key
+    return key
