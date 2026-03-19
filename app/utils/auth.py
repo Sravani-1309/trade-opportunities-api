@@ -1,12 +1,15 @@
-from fastapi import Header, HTTPException
+from fastapi import Header, HTTPException, Query
 
 def verify_user(
-    x_api_key: str = Header(None, alias="x-api-key")
+    x_api_key: str = Header(None, alias="x-api-key"),
+    api_key: str = Query(None)
 ):
-    if not x_api_key:
+    key = x_api_key or api_key
+
+    if not key:
         raise HTTPException(status_code=401, detail="API key required")
 
-    if x_api_key != "mysecretkey":
+    if key != "mysecretkey":
         raise HTTPException(status_code=401, detail="Invalid API key")
 
-    return x_api_key
+    return key
