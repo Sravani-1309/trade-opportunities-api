@@ -9,6 +9,14 @@ from fastapi.responses import JSONResponse
 
 
 app = FastAPI()
+@app.get("/")
+def home():
+    return {
+        "message": "Trade Opportunities API is running",
+        "usage": "/analyze/{sector}",
+        "docs": "/docs"
+    }
+
 
 app.state.limiter = limiter
 app.add_middleware(SlowAPIMiddleware)
