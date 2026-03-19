@@ -15,7 +15,6 @@ def analyze_sector(request: Request, sector: str, user=Depends(verify_user)):
 
     validate_sector(sector)
 
-    # 🔥 ADD THIS LINE
     session_count = track_session(user)
     print(f"User called API {session_count} times")
 
